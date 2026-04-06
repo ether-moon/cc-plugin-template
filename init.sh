@@ -32,16 +32,10 @@ DAY=$(date +%d)
 
 # ── Determine output directory ───────────────────────────────────────
 
-OUTPUT_DIR="$(pwd)/${MARKETPLACE_NAME}"
-
-if [ -d "$OUTPUT_DIR" ]; then
-  echo ""
-  echo "Error: Directory '${OUTPUT_DIR}' already exists." >&2
-  exit 1
-fi
+OUTPUT_DIR="$(pwd)"
 
 echo ""
-echo "Will create: ${OUTPUT_DIR}"
+echo "Will create plugin in: ${OUTPUT_DIR}"
 echo ""
 
 # ── Helper: render a template file ───────────────────────────────────
@@ -116,7 +110,7 @@ render "$TEMPLATE_DIR/project/LICENSE"           "${OUTPUT_DIR}/LICENSE"
 echo "Done! Created plugin project at: ${OUTPUT_DIR}"
 echo ""
 echo "Structure:"
-echo "  ${MARKETPLACE_NAME}/"
+echo "  ./"
 echo "  ├── .claude-plugin/marketplace.json"
 echo "  ├── plugins/${PLUGIN_NAME}/"
 echo "  │   ├── .claude-plugin/plugin.json"
@@ -130,7 +124,6 @@ echo "  ├── .claude/settings.json"
 echo "  ├── CLAUDE.md, AGENTS.md, CHANGELOG.md, LICENSE, .gitignore"
 echo ""
 echo "Next steps:"
-echo "  cd ${MARKETPLACE_NAME}"
 echo "  git init && git add -A && git commit -m 'Initial plugin scaffold'"
 echo "  bash tests/all.sh"
 echo ""
